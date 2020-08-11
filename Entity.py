@@ -1,5 +1,5 @@
 """
-Entity class for people and institutions.
+Entity class for people, objects, and institutions.
 """
 
 import datetime as dt

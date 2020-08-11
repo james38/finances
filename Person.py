@@ -1,6 +1,8 @@
 """
 Person class for humans, utilizing Entity class.
 """
+from math import *
+
 from Entity import *
 import questions
 
