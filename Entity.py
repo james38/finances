@@ -12,10 +12,10 @@ class Entity(object):
         #super(Entity, self).__init__()
         self.date_birth = date_birth
 
-    def gen_age(self):
+    def gen_age(self, now=dt.datetime.now()):
         # return age as float given %Y/%m/%d start
         age = relativedelta(
-            dt.datetime.now(),
+            now,
             dt.datetime.strptime(self.date_birth, "%Y/%m/%d")
         )
         years = age.years
