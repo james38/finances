@@ -27,7 +27,15 @@ def gen_sharpe(returns, rfr=0, freq=252):
     #   monthly returns, and freq is 1 for yearly returns
     k = np.sqrt(freq)
     rfr_period = (1+rfr)**(1/freq) - 1
-    numer = float(np.mean(returns.values - rfr_period))
-    denom = np.std(returns.values)
-    sharpe = k*numer/denom
+    ret = float(np.mean(returns.values - rfr_period))
+    std = np.std(returns.values)
+    if (std == 0):
+        if (ret > 0):
+            sharpe = np.inf
+        elif (ret == 0):
+            sharpe = 0
+        elif (ret < 0):
+            sharpe = -np.inf
+    else:
+        sharpe = k*ret/std
     return sharpe
