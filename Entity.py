@@ -5,20 +5,28 @@ Entity class for people, objects, and institutions.
 import datetime as dt
 from dateutil.relativedelta import relativedelta
 
-class Entity(object):
-    """docstring for Entity."""
+MNTHS = 12
+DAY_YR = 365.2425
 
-    def __init__(self, date_birth):
+class Entity(object):
+    """Entity."""
+
+    def __init__(self, name, dob=None):
         #super(Entity, self).__init__()
-        self.date_birth = date_birth
+        self.name = name
+        self.dob = dob
+        self.age = self.gen_age()
 
     def gen_age(self, now=dt.datetime.now()):
-        # return age as float given %Y/%m/%d start
-        age = relativedelta(
-            now,
-            dt.datetime.strptime(self.date_birth, "%Y/%m/%d")
-        )
-        years = age.years
-        months = age.months/12
-        days = age.days/365.2425
-        return years + months + days
+        """return age as float given %Y-%m-%d start"""
+        if self.dob is not None:
+            age = relativedelta(
+                now,
+                dt.datetime.strptime(self.dob, "%Y-%m-%d")
+            )
+            years = age.years
+            months = age.months / MNTHS
+            days = age.days / DAY_YR
+            return years + months + days
+        else:
+            return None
