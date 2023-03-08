@@ -1,6 +1,8 @@
 """
 Agreement class between persons or institutions.
 """
+import datetime as dt
+
 from Entity import Entity
 
 class Agreement(Entity):
