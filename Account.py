@@ -19,8 +19,10 @@ class Account(Agreement):
         )
         self.dollars = amount
 
-    def increase(amount):
+
+    def increase(self, amount):
         self.dollars += amount
 
-    def decrease(amount):
+
+    def decrease(self, amount):
         self.dollars -= amount
