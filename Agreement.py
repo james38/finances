@@ -1,18 +1,18 @@
-"""
-Agreement class between persons or institutions.
-"""
 import datetime as dt
 
 from Entity import Entity
 
-class Agreement(Entity):
-    """Agreement class"""
 
+class Agreement(Entity):
+    """
+    Agreement class between persons or institutions.
+    """
     def __init__(self, name, parties, actions, when=dt.datetime.now()):
         super().__init__(name, when)
         self.parties = parties
         self.actions = actions
         self.current = True
+
 
     def terminate(self, end_date=dt.datetime.now()):
         self.end_date = end_date
