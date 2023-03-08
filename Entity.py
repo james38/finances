@@ -12,13 +12,12 @@ class Entity(object):
     """Entity."""
 
     def __init__(self, name, dob=None):
-        #super(Entity, self).__init__()
         self.name = name
         self.dob = dob
         self.age = self.gen_age()
 
     def gen_age(self, now=dt.datetime.now()):
-        """return age as float given %Y-%m-%d start"""
+        """generate age as float, if given %Y-%m-%d start"""
         if self.dob is not None:
             age = relativedelta(
                 now,
